@@ -1,3 +1,5 @@
+package com.example;
+
 import org.bouncycastle.jcajce.provider.digest.SHA3;
 import org.bouncycastle.util.encoders.Hex;
 

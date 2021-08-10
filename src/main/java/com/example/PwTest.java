@@ -4,8 +4,7 @@ import com.example.filemngmt.Filemngmt;
 import org.bouncycastle.jcajce.provider.digest.SHA3;
 import org.bouncycastle.util.encoders.Hex;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
+import java.io.Console;
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -30,7 +29,11 @@ public class PwTest {
             } else if (input.equals("exit")) {
                 System.exit(0);
             } else {
-                pwTest.learnPw(Integer.parseInt(input));
+                try {
+                    pwTest.learnPw(Integer.parseInt(input));
+                } catch (Exception e) {
+                    continue;
+                }
             }
             System.out.println("");
         }
@@ -45,7 +48,7 @@ public class PwTest {
         System.out.println("Enter Hint!");
         hint = getInput();
         System.out.println("Enter Password!");
-        hash = getDisguisedInput();
+        hash = getPasswordInput();
         hash = hashInput(hash);
         filemngmt.addPw(number, hint, hash);
 
@@ -57,14 +60,18 @@ public class PwTest {
         return sc.nextLine();
     }
 
-    public static String getDisguisedInput() {
-        Scanner sc = new Scanner(System.in);
-        return sc.nextLine();
+    public static String getPasswordInput() {
+        Console console = System.console();
+        char[] password = console.readPassword();
+        String pw = String.valueOf(password);
+        // System.out.println(pw);
+        // Scanner sc = new Scanner(System.in);
+        return pw;
     }
 
     public void learnPw(int number) {
         System.out.println("Password:");
-        String input = getDisguisedInput();
+        String input = getPasswordInput();
         String hashedInput = hashInput(input);
         System.out.println(hashedInput);
         System.out.println(hashedInput.equals(filemngmt.getHash(number)));

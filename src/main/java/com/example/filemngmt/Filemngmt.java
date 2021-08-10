@@ -55,6 +55,10 @@ public class Filemngmt {
     }
 
     public void addPw(int number, String hint, String hash) {
+        try {
+            rows.remove(number);
+        } catch (Exception e) {
+        }
         rows.add(number, new Row(number, hint, hash));
     }
 }

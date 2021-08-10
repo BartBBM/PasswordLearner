@@ -33,7 +33,7 @@ public class PwTest {
     }
 
     public static String getHashedPW() throws IOException {
-        BufferedReader br = new BufferedReader(new FileReader("HashedPW.txt"));
+        BufferedReader br = new BufferedReader(new FileReader("../HashedPW.txt"));
         String hashedPW = br.readLine();
         br.close();
         return hashedPW;

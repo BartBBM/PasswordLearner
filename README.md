@@ -1,5 +1,5 @@
 # Password Learner
-Learn your Passwords!
+Learn your Passwords - offline and secure!
 
 ### Usage
 Start the program in a shell by "java -jar ./target/PwTest*.jar".  
